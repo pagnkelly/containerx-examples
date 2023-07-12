@@ -1,0 +1,73 @@
+<template>
+  <view class="list">
+    <view wx:for="{{listData}}" wx:key="*this" bindtap="toLogin">{{item}}</view>
+  </view>
+</template>
+
+<script>
+import { createComponent } from '@mpxjs/core'
+import { Login } from '@containerx/core'
+
+const loginParmas = {
+  appid: 130003,
+  wxappid: 'wxd98a20e429ce834b',
+  themeColor: '#ff009d',
+  btnColor: ['linear-gradient(90deg, #FF00AA 0%, #9500FF 100%)', '#fff'],
+  bwh: true,
+  bgFull: true,
+  bottomMargin: 40,
+  // protocolTitle: '法律条款与隐私政策',
+  // protocolLink: 'https://gift-static.hongyibo.com.cn/static/kfpub/b8d76639107f12d3142ed6a73336e245/index.html',
+  breatheAnimation: true,
+  env: '',
+  authHighlight: true,
+  bwhPhoneBtn: false, // 弱化手机号登录btn
+  protocolColor: '#2D3347',
+  loginEntryText: {
+    // auth: '',
+    // phone: '',
+    // defineBtnText: ''
+  },
+  protocolDialogTitle: '用户协议及隐私条款', // 弹窗标题文案
+  protocolDescColor: '#60636D', // 弹窗内容正常非加粗部分的颜色
+  protocols: [
+    {
+      title: '服务协议',
+      link: 'https://page.hongyibo.com.cn/kf-driver-biz/kf-baichuan-policy-agreement/index.html?mode=2&bc_appid=130003&bc_scene=app_law&lang=zh-CN&hidden_download=true'
+    },
+    {
+      title: '《个人信息处理规则》',
+      link: 'https://page.hongyibo.com.cn/kf-driver-biz/kf-baichuan-policy-agreement/index.html?mode=1&cnt_id=21100112018&hidden_download=true'
+    },
+    {
+      title: '《儿童个人信息处理规则》',
+      link: 'https://page.hongyibo.com.cn/kf-driver-biz/kf-baichuan-policy-agreement/index.html?mode=1&cnt_id=21100112019&hidden_download=true'
+    }
+  ],
+  bg: 'https://gift-static.hongyibo.com.cn/static/kfpub/3107/小程序_头图_iPhone_大机型@3x.png'
+  // bgUrl: 'https://gift-static.hongyibo.com.cn/static/kfpub/97f719b0-3d7b-404c-97b3-d852511566b3.png'
+  // bgUrl: isIphoneX() ? 'https://gift-static.hongyibo.com.cn/static/kfpub/0/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E9%A1%B5%E4%BC%98%E5%8C%96%402x.png' : 'https://gift-static.hongyibo.com.cn/static/kfpub/0/%E5%B0%8F%E6%9C%BA%E5%9E%8B%402x.png',
+}
+createComponent({
+  data: {
+    listData: ['手机', '电视', '电脑']
+  },
+  methods: {
+    async toLogin() {
+      const login = new Login(loginParmas)
+      await login.login()
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+  .list
+    background-color red
+</style>
+
+<script type="application/json">
+  {
+    "component": true
+  }
+</script>
